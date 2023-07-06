@@ -31,6 +31,9 @@ createApp({
                 this.todoItem.text = '';
                 this.todoList = respose.data
             });
+        },
+        toggleTaskStatus(index){
+            this.todoList[index].done = !this.todoList[index].done;
         }
     },
 }).mount('#app')

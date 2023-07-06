@@ -15,8 +15,9 @@
                         <div class="col-12">
                             <h1 class="text-light text-center">Todo List</h1>
                             <ul class="list-group list-group-flush border rounded border-1">
-                                <li v-for="(todoItem, index) in todoList" :key="index" class="list-group-item">
-                                    {{ todoItem.text }}
+                                <li v-for="(todoItem, index) in todoList" :key="index" class="list-group-item" :class="{ 'completed-task': todoItem.done }" @click="toggleTaskStatus(index)">
+                                    <span v-if="todoItem.done" class="completed-text">{{ todoItem.text }}</span>
+                                    <span v-else>{{ todoItem.text }}</span>
                                 </li>
                             </ul>
                         </div>
