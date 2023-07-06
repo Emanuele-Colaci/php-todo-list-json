@@ -10,6 +10,16 @@
     
         file_put_contents('data/todo_list.json', $arrayEncode);
     }
+
+    if(isset($_POST['action']) && $_POST['action'] === 'remove'){
+        $index = $_POST['index'];
+        if($index !== null && array_key_exists($index, $array)){
+            unset($array[$index]);
+            $array = array_values($array);
+            $arrayEncode = json_encode($array);
+            file_put_contents('data/todo_list.json', $arrayEncode);
+        }
+    }
     
     header('Content-Type: application/json');
     echo json_encode($array);
