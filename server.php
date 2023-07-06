@@ -14,8 +14,7 @@
     if(isset($_POST['action']) && $_POST['action'] === 'remove'){
         $index = $_POST['index'];
         if($index !== null && array_key_exists($index, $array)){
-            unset($array[$index]);
-            $array = array_values($array);
+            array_splice($array, $index, 1);
             $arrayEncode = json_encode($array);
             file_put_contents('data/todo_list.json', $arrayEncode);
         }

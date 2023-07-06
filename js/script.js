@@ -27,9 +27,12 @@ createApp({
 
             axios.post(this.apiUrl, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
-            }).then((respose) => {
+            }).then((response) => {
                 this.todoItem.text = '';
-                this.todoList = respose.data
+                this.todoList = response.data.map((item) => {
+                    item.done = false; // Imposta sempre "done" a false per i nuovi elementi
+                    return item;
+                });
             });
         },
         toggleTaskStatus(index){
@@ -39,7 +42,7 @@ createApp({
             const removedIndex = index;
             
             axios.post(this.apiUrl, { action: 'remove', index: removedIndex }, {
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'multipart/form-data' }
             }).then((response) => {
                 this.todoList = response.data;
             });
