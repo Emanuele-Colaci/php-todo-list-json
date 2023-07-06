@@ -13,12 +13,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h1 class="text-light">Todo List</h1>
-                            <ul class="list-group list-group-flush border border-1">
+                            <h1 class="text-light text-center">Todo List</h1>
+                            <ul class="list-group list-group-flush border rounded border-1">
                                 <li v-for="(todoItem, index) in todoList" :key="index" class="list-group-item">
                                     {{ todoItem.text }}
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" @keyup.enter="list" v-model="todoItem.text" class="form-control mt-3" placeholder="Nuova task...">
                         </div>
                     </div>
                 </div>
