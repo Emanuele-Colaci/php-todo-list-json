@@ -34,6 +34,16 @@ createApp({
         },
         toggleTaskStatus(index){
             this.todoList[index].done = !this.todoList[index].done;
+        },
+        removeTask(index){
+            const removedItem = this.todoList[index];
+            this.todoList.splice(index, 1);
+            // Invia una richiesta al server per aggiornare la lista sul lato server
+            axios.post(this.apiUrl, removedItem, {
+                headers: { 'Content-Type': 'application/json' }
+            }).then((response) => {
+                this.todoList = response.data;
+            });
         }
     },
 }).mount('#app')

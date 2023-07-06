@@ -20,3 +20,8 @@
 .completed-text{
     color: #999;
 }
+
+ul{
+    height: 300px;
+    width: 500px;
+}
