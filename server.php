@@ -5,6 +5,7 @@
 
     if(isset($_POST['todoItem'])){
         $newItem = $_POST['todoItem'];
+        $newItem['done'] = false;
         array_push($array, $newItem);
         $arrayEncode = json_encode($array);
     

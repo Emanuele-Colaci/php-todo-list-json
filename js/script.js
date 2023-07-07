@@ -28,9 +28,9 @@ createApp({
             axios.post(this.apiUrl, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }).then((response) => {
-                this.todoItem.text = '';
+                this.todoItem = '';
                 this.todoList = response.data.map((item) => {
-                    item.done = false; // Imposta sempre "done" a false per i nuovi elementi
+                    this.todoItem.text = '';
                     return item;
                 });
             });
